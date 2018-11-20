@@ -2,10 +2,11 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-        steps {
-          script {
-            withMaven(globalMavenSettingsConfig: "$mavenConfig", jdk: "$JDKVersion", maven: "$mavenLocation") {
-            sh 'mvn -B -DskipTests clean package'
+          steps {
+            script {
+              withMaven(globalMavenSettingsConfig: "$mavenConfig", jdk: "$JDKVersion", maven: "$mavenLocation") {
+              sh 'mvn -B -DskipTests clean package'
+              }
             }
           }
         }
