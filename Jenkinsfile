@@ -2,9 +2,10 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-          steps {
-            withMaven(maven: 'M3', jdk: 'jdk8-latest', globalMavenSettingsConfig: 'default-global-settings', mavenSettingsConfig: 'codice-maven-settings', mavenOpts: '${LINUX_MVN_RANDOM}') {
-              sh 'mvn -B -DskipTests clean package'
+        steps {
+          script {
+            withMaven(globalMavenSettingsConfig: "$mavenConfig", jdk: "$JDKVersion", maven: "$mavenLocation") {
+            sh 'mvn -B -DskipTests clean package'
             }
           }
         }
