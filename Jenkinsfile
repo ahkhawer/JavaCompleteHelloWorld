@@ -2,9 +2,12 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
+           withMaven(maven: 'M3',){
+               sh 'mvn -B -DskipTests clean package'
+           }
+            //steps {
+              //  sh 'mvn -B -DskipTests clean package'
+            //}
         }
         stage('Test') {
             steps {
