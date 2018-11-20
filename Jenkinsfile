@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
           steps {
             script {
-              withMaven(globalMavenSettingsConfig: "$mavenConfig", jdk: "$JDKVersion", maven: "$mavenLocation") {
+              withMaven( maven: "/Applications/apache-maven-3.6.0") {
               sh 'mvn -B -DskipTests clean package'
               }
             }
