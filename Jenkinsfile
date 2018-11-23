@@ -15,7 +15,11 @@ pipeline {
         }
         post {
           always {
-            junit 'target/surefire-reports/*.xml'
+            //junit 'target/surefire-reports/*.xml'
+            echo 'Changing directory to features'
+            sh 'cd features'
+            echo 'Running lettuce command'
+            sh 'lettuce'
           }
         }
       }
