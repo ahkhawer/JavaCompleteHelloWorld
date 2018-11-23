@@ -40,15 +40,6 @@ public class AppTest
         }
     }
 
-    @Test
-    public void openBrowser(){
-      System.out.println("Here start opening browser.");
-      WebDriver  driver = new FirefoxDriver();
-      driver.get("https://facebook.com");
-      System.out.println(driver.getTitle());
-      driver.quit();
-    }
-
     @After
     public void cleanUpStreams() {
         System.setOut(null);
