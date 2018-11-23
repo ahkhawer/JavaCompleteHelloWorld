@@ -11,15 +11,15 @@ pipeline {
       }
       stage('Test') {
         steps {
-          sh 'mvn test'
+          //sh 'mvn test'
+          echo 'Changing directory to features'
+          sh 'cd features'
+          echo 'Running lettuce command'
+          sh 'lettuce'
         }
         post {
           always {
-            //junit 'target/surefire-reports/*.xml'
-            echo 'Changing directory to features'
-            sh 'cd features'
-            echo 'Running lettuce command'
-            sh 'lettuce'
+            junit 'target/surefire-reports/*.xml'
           }
         }
       }
