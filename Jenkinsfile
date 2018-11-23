@@ -6,16 +6,16 @@ pipeline {
   stages {
       stage('Build') {
         steps {
-          sh 'mvn -B -DskipTests clean package'
+          //sh 'mvn -B -DskipTests clean package'
+          echo 'Changing directory to features'
+          sh 'cd features'
+          echo 'Running lettuce command'
+          sh 'lettuce'
         }
       }
       stage('Test') {
         steps {
           //sh 'mvn test'
-          echo 'Changing directory to features'
-          sh 'cd features'
-          echo 'Running lettuce command'
-          sh 'lettuce'
         }
         post {
           always {
